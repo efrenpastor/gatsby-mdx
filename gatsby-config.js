@@ -8,9 +8,11 @@ module.exports = {
   siteMetadata: {
     title: 'Pandas Eating Lots',
     description: 'A simple description about pandas eating lots...',
-    author: '@epastor'
+    author: '@epastor',
+    siteUrl: 'https://gatsby-mdx.efrenpastor.now.sh'
   },
   plugins: [
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
