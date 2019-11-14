@@ -13,12 +13,28 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "dependencies": {
-    "gatsby": "^2.16.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "@emotion/core": "^10.0.22",
+    "@mdx-js/mdx": "^1.5.1",
+    "@mdx-js/react": "^1.5.1",
+    "gatsby": "^2.17.13",
+    "gatsby-plugin-emotion": "^4.1.14",
+    "gatsby-plugin-manifest": "^2.2.27",
+    "gatsby-plugin-mdx": "^1.0.56",
+    "gatsby-plugin-offline": "^3.0.20",
+    "gatsby-plugin-react-helmet": "^3.1.14",
+    "gatsby-plugin-typography": "^2.3.16",
+    "gatsby-source-filesystem": "^2.1.36",
+    "gatsby-transformer-remark": "^2.6.34",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-helmet": "^5.2.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19",
+    "typography-theme-kirkham": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1",
+    "standard": "^14.3.1"
   },
   "repository": {
     "type": "git",
