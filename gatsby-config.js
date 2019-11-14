@@ -14,6 +14,12 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sitemap',
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'GatsbyJS',
