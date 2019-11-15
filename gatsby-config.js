@@ -12,7 +12,53 @@ module.exports = {
     siteUrl: 'https://gatsby-mdx.efrenpastor.now.sh'
   },
   plugins: [
-    'gatsby-plugin-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+
+            allSitePage {
+              edges {
+                node {
+                  path
+                  internalComponentName
+                }
+              }
+            }
+          }
+        `,
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => {
+            let freq
+            let priority
+            switch (edge.node.internalComponentName) {
+              case 'ComponentAbout':
+                freq = 'never'
+                priority = 0
+                break
+              case 'ComponentIndex':
+                freq = 'daily'
+                priority = 0.7
+                break
+              default:
+                freq = 'weekly'
+                priority = 0.5
+                break
+            }
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+              changefreq: freq,
+              priority: priority
+            }
+          })
+      }
+    },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
