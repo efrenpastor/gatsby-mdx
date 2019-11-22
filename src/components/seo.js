@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const Seo = props => {
-  const { description, lang, meta, title } = props
+  const { description, lang, meta, title, canonical } = props
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -18,6 +18,7 @@ const Seo = props => {
       }
     `
   )
+
   const metaDescription = description || site.siteMetadata.description
   return (
     <Helmet
@@ -60,7 +61,12 @@ const Seo = props => {
           content: metaDescription
         }
       ].concat(meta)}
-    />
+    >
+      {
+        canonical &&
+          <link rel='canonical' href={`${canonical}`} />
+      }
+    </Helmet>
   )
 }
 
