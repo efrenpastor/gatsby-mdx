@@ -12,8 +12,8 @@ const sourceFilesystem = require('./config/plugins/sourceFilesystem')
 const mdx = require('./config/plugins/mdx')
 const emotion = require('./config/plugins/emotion')
 const typography = require('./config/plugins/typography')
-const offline = require('./config/plugins/offline')
 const reactHelmet = require('./config/plugins/reactHelmet')
+const amp = require('./config/plugins/amp')
 
 module.exports = {
   siteMetadata,
@@ -28,7 +28,7 @@ module.exports = {
     mdx,
     emotion,
     typography,
-    offline,
-    reactHelmet
+    reactHelmet,
+    amp
   ]
 }

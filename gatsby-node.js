@@ -4,7 +4,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'Mdx') {
-    const slug = createFilePath({ node, getNode, basePath: 'pages' })
+    const slug = createFilePath({ node, getNode, basePath: 'src/content' })
     createNodeField({
       node,
       name: 'slug',
@@ -52,8 +52,6 @@ exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: node.fields.slug,
         component: path.resolve('./src/templates/blog-post.js'),
-        // Data passed to context is available
-        // in page queries as Graphql variables
         context: {
           id: node.id,
           slug: node.fields.slug,
