@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   resolve: 'gatsby-plugin-sitemap',
   options: {
@@ -38,7 +40,7 @@ module.exports = {
             break
         }
         return {
-          url: site.siteMetadata.siteUrl + edge.node.path,
+          url: path.join(site.siteMetadata.siteUrl + edge.node.path),
           changefreq: freq,
           priority: priority
         }
