@@ -5,14 +5,14 @@ import PrevNext from '../components/prevnext'
 import Seo from '../components/seo'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { siteUrl } from '../../config/env'
-import path from 'path'
+const url = require('../../utils/url')
 
 export default (props) => {
   const { title } = props.data.mdx.frontmatter
   const { excerpt, body } = props.data.mdx
   const { previous, next, slug } = props.pageContext
-  const canonical = path.join(siteUrl + slug)
-  const amphtml = path.join(siteUrl + '/amp/' + slug)
+  const canonical = url.join(siteUrl, slug)
+  const amphtml = url.join(siteUrl, '/amp/', slug)
 
   return (
     <Layout>
