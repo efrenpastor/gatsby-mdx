@@ -12,10 +12,11 @@ export default (props) => {
   const { excerpt, body } = props.data.mdx
   const { previous, next, slug } = props.pageContext
   const canonical = path.join(siteUrl + slug)
+  const amphtml = path.join(siteUrl + '/amp/' + slug)
 
   return (
     <Layout>
-      <Seo title={title} description={excerpt} canonical={canonical} />
+      <Seo title={title} description={excerpt} canonical={canonical} amphtml={amphtml} />
       <div>
         <h1>{title}</h1>
         <MDXRenderer>{body}</MDXRenderer>
