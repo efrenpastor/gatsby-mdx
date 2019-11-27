@@ -67,6 +67,17 @@ exports.createPages = async ({ graphql, actions }) => {
           next: next
         }
       })
+
+      createPage({
+        path: `/amp/${node.fields.slug}`,
+        component: path.resolve('./src/templates/blog-post.amp.js'),
+        context: {
+          id: node.id,
+          slug: node.fields.slug,
+          previous: previous,
+          next: next
+        }
+      })
     })
   } catch (error) {
     throw new Error(error)

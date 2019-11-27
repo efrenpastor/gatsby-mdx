@@ -1,9 +1,9 @@
 module.exports = {
   resolve: 'gatsby-plugin-html2amp',
   options: {
-    files: ['reviews/**/*.html'],
+    files: ['amp/**/*.html'],
     publicPath: 'public',
-    dist: 'public/amp',
+    dist: 'public',
     optimize: true
   }
 }
