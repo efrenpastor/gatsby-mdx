@@ -13,6 +13,9 @@ export default (props) => {
   const { previous, next, slug } = props.pageContext
   const canonical = url.join(siteUrl, slug)
 
+  if (previous) previous.fields.slug = `/amp/${previous.fields.slug}`
+  if (next) next.fields.slug = `/amp/${next.fields.slug}`
+
   return (
     <Layout>
       <Seo title={title} description={excerpt} canonical={canonical} />

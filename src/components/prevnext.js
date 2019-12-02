@@ -8,16 +8,16 @@ const PrevNext = props => {
       {
         previous &&
           <li>
-            <Link to={previous.fields.slug} >
-              Previous  {' '} {previous.frontmatter.title}
+            <Link to={previous.fields.slug}>
+              {`Previous  ${previous.frontmatter.title}`}
             </Link>
           </li>
       }
       {
         next &&
           <li>
-            <Link to={next.fields.slug} >
-              Next  {' '} {next.frontmatter.title}
+            <Link to={next.fields.slug}>
+              {`Next  ${next.frontmatter.title}`}
             </Link>
           </li>
       }
