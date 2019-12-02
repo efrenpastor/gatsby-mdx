@@ -1,4 +1,5 @@
 const path = require('path')
+const { kebabCase } = require('lodash')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.onCreateWebpackConfig = ({ getConfig, actions }) => {
@@ -24,8 +25,8 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const query = await graphql(`
-    query {
-      allMdx {
+    {
+      posts: allMdx(limit: 2000) {
         edges {
           node {
             id
@@ -51,11 +52,16 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tags: allMdx(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
   `)
 
   try {
-    const posts = query.data.allMdx.edges
+    const posts = query.data.posts.edges
     posts.forEach(({ node, previous, next }) => {
       createPage({
         path: node.fields.slug,
@@ -76,6 +82,17 @@ exports.createPages = async ({ graphql, actions }) => {
           slug: node.fields.slug,
           previous: previous,
           next: next
+        }
+      })
+    })
+
+    const tags = query.data.tags.group
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${kebabCase(tag.fieldValue)}`,
+        component: path.resolve('./src/templates/tags.js'),
+        context: {
+          tag: tag.fieldValue
         }
       })
     })
