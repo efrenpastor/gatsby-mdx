@@ -57,6 +57,11 @@ exports.createPages = async ({ graphql, actions }) => {
           fieldValue
         }
       }
+      categories: allMdx(limit: 2000) {
+        group(field: frontmatter___categories) {
+          fieldValue
+        }
+      }
     }
   `)
 
@@ -96,6 +101,18 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       })
     })
+
+    const categories = query.data.categories.group
+    categories.forEach(category => {
+      createPage({
+        path: `/categories/${kebabCase(category.fieldValue)}`,
+        component: path.resolve('./src/templates/categories.js'),
+        context: {
+          category: category.fieldValue
+        }
+      })
+    })
+
   } catch (error) {
     throw new Error(error)
   }
