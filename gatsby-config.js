@@ -15,6 +15,7 @@ const emotion = require('./config/plugins/emotion')
 const typography = require('./config/plugins/typography')
 const reactHelmet = require('./config/plugins/reactHelmet')
 const amp = require('./config/plugins/amp')
+const rss = require('./config/plugins/rss')
 
 module.exports = {
   siteMetadata,
@@ -31,6 +32,7 @@ module.exports = {
     emotion,
     typography,
     reactHelmet,
-    amp
+    amp,
+    rss
   ]
 }
