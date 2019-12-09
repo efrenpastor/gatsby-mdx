@@ -27,7 +27,7 @@ module.exports = {
     sharp,
     transformerRemark,
     sourceFilesystem.content,
-    sourceFilesystem.images,
+    // sourceFilesystem.images,
     mdx,
     emotion,
     typography,

@@ -6,11 +6,11 @@ module.exports = {
       path: './src/content'
     }
   },
-  images: {
-    resolve: 'gatsby-source-filesystem',
-    options: {
-      name: 'images',
-      path: './src/images/content'
-    }
-  }
+  // images: {
+  //   resolve: 'gatsby-source-filesystem',
+  //   options: {
+  //     name: 'images',
+  //     path: './src/images/content'
+  //   }
+  // }
 }
