@@ -11,8 +11,7 @@ const sharp = require('./config/plugins/sharp')
 const transformerRemark = require('./config/plugins/transformerRemark')
 const sourceFilesystem = require('./config/plugins/sourceFilesystem')
 const mdx = require('./config/plugins/mdx')
-const emotion = require('./config/plugins/emotion')
-const typography = require('./config/plugins/typography')
+const sass = require('./config/plugins/sass')
 const reactHelmet = require('./config/plugins/reactHelmet')
 const amp = require('./config/plugins/amp')
 const rss = require('./config/plugins/rss')
@@ -27,10 +26,8 @@ module.exports = {
     sharp,
     transformerRemark,
     sourceFilesystem.content,
-    // sourceFilesystem.images,
     mdx,
-    emotion,
-    typography,
+    sass,
     reactHelmet,
     amp,
     rss
