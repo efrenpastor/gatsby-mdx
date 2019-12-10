@@ -1,53 +1,20 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import { css } from '@emotion/core'
-import { rhythm } from '../utils/typography'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
+import Card from '../components/card'
 
 export default ({ data }) => {
   return (
-    <Layout>
-      <div>
-        <h1
-          css={
-            css`
-              display: inline-block;
-              border-bottom: 1px solid;
-            `
-          }
-        >
-          Amazin Pandas Eating Things
-        </h1>
-        <h4>{data.allMdx.totalCount} Posts</h4>
-        {data.allMdx.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link
-              to={node.fields.slug}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              <h3
-                css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
-                `}
-              >
-                {node.frontmatter.title}{' '}
-                <span
-                  css={
-                    css`
-                      color: #bbb;
-                    `
-                  }
-                >
-                  - {node.frontmatter.date}
-                </span>
-              </h3>
-              <p>{node.excerpt}</p>
-            </Link>
-          </div>
-        ))}
+    <Layout hasHeader>
+      <h4 className='subtitle'>{data.allMdx.totalCount} Posts</h4>
+      <div className='container'>
+        <div className='columns is-multiline'>
+          {data.allMdx.edges.map(({ node }) => (
+            <div key={node.id} className='column is-one-third'>
+              <Card slug={node.fields.slug} title={node.frontmatter.title} excerpt={node.excerpt} date={node.frontmatter.date} />
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   )

@@ -1,0 +1,16 @@
+.wrapper {
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.title {
+    margin-bottom: 20px;
+    display: inline-block;
+    font-style: normal;
+}
+
+.navigation {
+    float: right;
+}

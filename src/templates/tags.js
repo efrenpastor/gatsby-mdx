@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/layout'
+import Card from '../components/card'
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
@@ -11,18 +12,14 @@ const Tags = ({ pageContext, data }) => {
 
   return (
     <Layout>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {edges.map(({ node }) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
-          return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
-            </li>
-          )
-        })}
-      </ul>
+      <h1 className='title'>{tagHeader}</h1>
+      <div className='columns is-multiline'>
+        {edges.map(({ node }) => (
+          <div key={node.id} className='column is-one-third'>
+            <Card slug={node.fields.slug} title={node.frontmatter.title} excerpt={node.excerpt} date={node.frontmatter.date} />
+          </div>
+        ))}
+      </div>
       <Link to='/tags'>All tags</Link>
     </Layout>
   )
@@ -39,11 +36,14 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          id
           fields {
             slug
           }
+          excerpt
           frontmatter {
             title
+            date(formatString: "DD MMMM, YYYY")
           }
         }
       }

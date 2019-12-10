@@ -5,17 +5,15 @@ import { kebabCase } from 'lodash'
 const Tags = props => {
   const { tags } = props
   return (
-    <ul>
+    <nav className='tags are-medium'>
       {
         tags && tags.map((tag, i) =>
-          <li key={i}>
-            <Link to={`/tags/${kebabCase(tag)}`}>
-              {tag}
-            </Link>
-          </li>
+          <Link key={i} className='tag is-link is-light' to={`/tags/${kebabCase(tag)}`}>
+            {tag}
+          </Link>
         )
       }
-    </ul>
+    </nav>
   )
 }
 

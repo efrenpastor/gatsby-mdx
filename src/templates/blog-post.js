@@ -18,12 +18,12 @@ export default (props) => {
   return (
     <Layout>
       <Seo title={title} description={excerpt} canonical={canonical} amphtml={amphtml} />
-      <div>
-        <h1>{title}</h1>
-        <Tags tags={tags} />
+      <h1 className='title'>{title}</h1>
+      <Tags tags={tags} />
+      <article className='content'>
         <MDXRenderer>{body}</MDXRenderer>
-        <PrevNext previous={previous && previous} next={next && next} />
-      </div>
+      </article>
+      <PrevNext previous={previous && previous} next={next && next} />
     </Layout>
   )
 }

@@ -11,16 +11,14 @@ const TagsPage = ({
   }
 }) => (
   <Layout>
-    <h1>Tags</h1>
-    <ul>
-      {group.map(tag => (
-        <li key={tag.fieldValue}>
-          <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-            {tag.fieldValue} ({tag.totalCount})
-          </Link>
-        </li>
+    <h1 className='title'>Tags</h1>
+    <nav className='tags are-medium'>
+      {group.map((tag, i) => (
+        <Link key={i} className='tag is-link is-light' to={`/tags/${kebabCase(tag.fieldValue)}`}>
+          {tag.fieldValue} ({tag.totalCount})
+        </Link>
       ))}
-    </ul>
+    </nav>
   </Layout>
 )
 
